@@ -32,3 +32,32 @@
   .vault-emblem{width:72px;height:72px;font-size:23px}
   .stat{padding:12px;min-height:94px}
 }
+
+/* Responsive modal/form and iOS viewport hardening */
+html,body{width:100%;max-width:100%;overflow-x:hidden}
+.modal-backdrop{overflow-y:auto;overscroll-behavior:contain;-webkit-overflow-scrolling:touch}
+.modal{width:min(680px,100%);max-width:100%;min-width:0;overscroll-behavior:contain;-webkit-overflow-scrolling:touch}
+.detail-modal{width:min(1080px,100%)}
+.detail-layout,.detail-layout>div,.completion-panel{min-width:0;max-width:100%}
+.completion-panel{overflow:hidden}
+.completion-row{grid-template-columns:minmax(0,1fr) minmax(0,1fr) minmax(0,1fr);min-width:0}
+.completion-row>*{min-width:0;max-width:100%;width:100%}
+.completion-row input[type=date]{display:block;appearance:none;-webkit-appearance:none;min-width:0;width:100%;max-width:100%;color-scheme:dark;accent-color:var(--lime)}
+.completion-row input[type=date]::-webkit-calendar-picker-indicator{filter:invert(82%) sepia(90%) saturate(510%) hue-rotate(26deg) brightness(105%);opacity:1}
+.completion-panel input,.completion-panel select{min-width:0;max-width:100%;width:100%}
+@media(max-width:800px){.detail-layout{grid-template-columns:minmax(0,1fr)}.completion-row{grid-template-columns:minmax(0,1fr)}}
+@media(max-width:560px){
+  html{scroll-padding-top:12px}
+  body{min-height:100dvh}
+  .app-shell{width:calc(100% - 20px);max-width:100%}
+  .modal-backdrop{align-items:flex-start;padding:8px;padding-top:max(8px,env(safe-area-inset-top))}
+  .modal{max-height:calc(100dvh - 16px);max-height:calc(100vh - 16px);padding:16px;width:100%;border-radius:18px}
+  .detail-modal{padding:16px}
+  .completion-panel{padding:14px}
+  .completion-row{display:grid;grid-template-columns:minmax(0,1fr);gap:10px}
+  .completion-row input[type=date]{font-size:16px;padding:13px 10px;min-height:52px}
+  .completion-row select,.completion-row input{font-size:16px;min-height:52px}
+  .completion-panel .text-field{font-size:16px}
+  .completion-panel button{min-width:0;max-width:100%}
+  .detail-description{max-height:160px}
+}
