@@ -1,0 +1,11 @@
+GAMEVAULT ADMIN MODE SETUP
+
+1) In Supabase Dashboard, go to Authentication > Users and create your admin account (email + password).
+2) Copy that user's UUID from the Auth Users list.
+3) Open SUPABASE-SETUP.sql and replace every OWNER_UUID with that UUID, then run the script in SQL Editor.
+4) Configure the app's Supabase URL and publishable/anon key using Settings. Settings appears only after login in this build; so configure them in app.js first:
+   PUBLIC_SUPABASE_URL and PUBLIC_SUPABASE_KEY at the top. Set these to your project URL and public anon/publishable key.
+5) Deploy these files to GitHub Pages.
+6) Visitors can read/search/filter. Click Admin Login and use the Auth email/password to unlock add/edit/delete.
+
+IMPORTANT: This version uses Supabase Auth token for owner write requests. Anonymous visitors are read-only at the database policy level. The publishable/anon key is not a secret.
