@@ -1,12 +1,10 @@
-GAME VAULT - Personal game tracker
+GAME VAULT - PUBLIC VIEWER
 
-1) Open the folder and start a local server:
-   Windows: open a terminal in this folder and run:
-   py -m http.server 8000
-2) In your browser visit http://localhost:8000
-3) Click Settings (gear) and paste your RAWG API key, then save.
-4) Click Add game and search.
+This package is a public read-only viewer. Visitors can browse/search/filter the shared collection and view game details. Add/edit/delete and settings controls are hidden.
 
-Games and API key are saved in the browser's LocalStorage.
+BEFORE PUBLISHING:
+1. Open app.js and set PUBLIC_SUPABASE_URL and PUBLIC_SUPABASE_KEY near the top to your Supabase project URL and anon/publishable key.
+2. Run SUPABASE-SETUP.sql in the Supabase SQL Editor. This drops existing policies on public.games and gives anon read-only access. IMPORTANT: this disables anonymous cloud writes. Owner editing needs a separate authenticated owner setup/backend; do not restore anonymous write permissions.
+3. Upload the files in the game-vault folder to the GitHub Pages repository.
 
-To access from iPhone on your Wi-Fi, the app needs a suitable secure hosting setup for PWA installation (e.g. private GitHub Pages deployment). For quick testing, the local server is desktop-first.
+Visitors do not need Supabase keys or RAWG keys entered. The embedded Supabase publishable/anon key is designed for public client use and is constrained by database permissions/RLS.
